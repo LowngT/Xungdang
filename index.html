@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mở Camera Trước</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #f0f4f7, #dbeafe);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #1e3a8a;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #cbd5e1;
+    }
+
+    video {
+      border: 6px solid #60a5fa;
+      border-radius: 12px;
+      width: 90vw;
+      max-width: 480px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #374151;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎥 Mở Camera Trước</h1>
+  <video id="video" autoplay playsinline></video>
+  <div class="note">* Hãy cho phép truy cập camera nếu được yêu cầu.</div>
+
+  <script>
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: "user" } // "user" = camera trước
+        });
+        const video = document.getElementById("video");
+        video.srcObject = stream;
+      } catch (error) {
+        alert("Không thể truy cập camera: " + error.message);
+      }
+    }
+
+    startCamera();
+  </script>
+</body>
+</html>
