@@ -3,53 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mở Camera Trước</title>
+  <title>Camera Yêu Thương</title>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #f0f4f7, #dbeafe);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #cfe0fc);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      text-align: center;
+      padding: 20px;
     }
 
     h1 {
+      color: #6b21a8;
+      margin-bottom: 12px;
+      font-size: 24px;
+      text-shadow: 1px 1px 3px #fbcfe8;
+    }
+
+    h2 {
       color: #1e3a8a;
+      font-weight: normal;
+      font-size: 16px;
       margin-bottom: 20px;
-      text-shadow: 1px 1px 2px #cbd5e1;
     }
 
     video {
-      border: 6px solid #60a5fa;
-      border-radius: 12px;
+      border: 5px solid #fb7185;
+      border-radius: 16px;
       width: 90vw;
-      max-width: 480px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 420px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
 
     .note {
       margin-top: 20px;
-      font-size: 14px;
+      font-size: 13px;
       color: #374151;
     }
   </style>
 </head>
 <body>
-  <h1>🎥 Mở Camera Trước</h1>
+  <h1>✨ Nhìn xem cậu của hiện tại rất tốt</h1>
+  <h2>Hãy nhìn nhận bản thân đi! Babe, I love you no matter how you are, you know 💗</h2>
   <video id="video" autoplay playsinline></video>
-  <div class="note">* Hãy cho phép truy cập camera nếu được yêu cầu.</div>
+  <div class="note">* Cho phép camera để thấy người tuyệt vời đó là ai nha 🥰</div>
 
   <script>
     async function startCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "user" } // "user" = camera trước
+          video: { facingMode: "user" }
         });
-        const video = document.getElementById("video");
-        video.srcObject = stream;
+        document.getElementById("video").srcObject = stream;
       } catch (error) {
         alert("Không thể truy cập camera: " + error.message);
       }
